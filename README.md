@@ -13,7 +13,7 @@ The following OSs were installed on a Raspberry Pi 4
 * Ubuntu 21.10
 * Ubuntu 21.10 (32 bit)
 * openSUSE Tumbleweed
-\
+
 #Results
 Rank | OS | Net runtime | Pvalue
 |:---:|:---:|:---:|:---:|
