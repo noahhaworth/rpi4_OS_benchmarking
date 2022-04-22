@@ -1,8 +1,8 @@
 # rpi4_OS_benchmarking
 The following OSs were installed on a Raspberry Pi 4
-Markup: *Alpine
-*Arch Linux ARM
-*DietPi
+Markup: *Alpine\\
+*Arch Linux ARM\\
+*DietPi\\
 *Fedora 35
 *FreeBSD
 *Kali
