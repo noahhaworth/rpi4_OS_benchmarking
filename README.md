@@ -14,7 +14,7 @@ The following OSs were installed on a Raspberry Pi 4
 * Ubuntu 21.10 (32 bit)
 * openSUSE Tumbleweed
 
-#Results
+# Results
 Rank | OS | Net runtime | Pvalue
 |:---:|:---:|:---:|:---:|
 1 | Rasberry Pi OS | 156.54 | 0
