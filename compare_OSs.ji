@@ -1,0 +1,96 @@
+#!/usr/bin/env julia
+using HypothesisTests
+using DelimitedFiles
+using Plots
+using Statistics
+
+gr(grid=false,legend=false,label=false)
+
+function read(names)
+	vector = Array{Any}(undef,size(names)[1],3)
+	row = 1
+	for name in names
+		time = readdlm("compares/"*name)[:,3]
+		vector[row,:] = [name,time,sum(time)]
+		row += 1
+	end
+	return vector
+end
+
+function get_pvalue(set1,set2)
+	return pvalue(SignedRankTest(set1,set2),tail=:left)
+end
+
+function check_pvalues(data)
+	data[:,3] = append!(get_pvalue.(data[1:end-1,2],data[2:end,2]),0)
+	rows = size(data)[1]
+	check = Array{Any}(undef,rows,2)
+	for index = 1:rows
+		if data[index,3] > .5
+			check[index,:] = [true,index]
+		else
+			check[index,:] = [false,0]
+		end
+	end
+	for index in rows-1
+		if check[index,1] == 1
+			check[index+1,1] = false
+		end
+	end	
+	return check
+end
+
+function swap_orders(data,bools,count,net_time)
+	check = check_pvalues(data)
+	repeat = false
+	for index = 1:size(data)[1]
+		if check[index] == 1 && bools[index] == 0
+			data[index,:],data[index+1,:] = data[index+1,:],data[index,:]
+			net_time[index],net_time[index+1] = net_time[index+1],net_time[index]
+			bools[index] = 1
+			repeat = true
+		else
+			bools[index] = 0
+		end
+	end
+	if count > 10
+		return
+	end
+	if repeat
+		count += 1
+		swap_orders(data,bools,count,net_time)
+	end
+#	println(count)
+end	
+
+function show_pvalues(set1,set2)
+	println(SignedRankTest(set1,set2))
+end
+
+function make_plots(set1,set2,num,name1,name2)
+	δ = (set2-set1)./set1*100
+	min = minimum(δ)
+	max = maximum(δ)
+	R=range(min,stop=max,length=6)
+	histogram(1:size(δ)[1],δ,bins=R,title=name1*" vs "*name2,xlabal="Δ%",ylabel="#")
+	savefig("plots/"*string(num)*".pdf")
+end
+
+data = sortslices(read(readdir("compares")),by=x->x[3],dims=1)
+
+names = data[:,1]
+
+net_time = data[:,3]
+
+bools = zeros(size(data)[1])
+
+swap_orders(data,bools,1,net_time)
+
+show_pvalues.(data[1:end-1,2],data[2:end,2])
+make_plots.(data[1:end-1,2],data[2:end,2],1:size(data)[1]-1,names[1:end-1],names[2:end])
+
+writedlm("results2.csv",data)
+
+nice_data = [data[:,1] net_time append!(get_pvalue.(data[1:end-1,2],data[2:end,2]),0)]
+
+writedlm("nice.csv",nice_data)

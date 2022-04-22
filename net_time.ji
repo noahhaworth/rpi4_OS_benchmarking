@@ -1,0 +1,13 @@
+#!/usr/bin/env julia
+using DelimitedFiles
+
+bulk_data = readdir("compares")
+
+for file in bulk_data
+
+data = readdlm("compares/"*file,'\t')
+
+time = data[:,3]
+println(file*" total time:\t",sum(time))
+end
+

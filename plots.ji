@@ -1,0 +1,37 @@
+#!/usr/bin/env julia
+using DelimitedFiles
+using Plots
+gr()#label=:outterbottomright)
+bulk_data = readdir("compares")
+
+function convert_meta(value)
+	if(value == 13)
+		value = 2
+	elseif(value == 14)
+		value = 6
+	elseif(value == 16)
+		value = 7
+	elseif(value == 35)
+		value = 9
+	end
+	return value
+end
+count = 0
+for file in bulk_data
+
+	data = readdlm("compares/"*file,'\t')
+
+	problems = data[:,1] .-4
+
+	metas = convert_meta.(data[:,2])
+
+	time = data[:,3]
+	if count == 0
+		scatter(problems,metas,time,label=file,xlabel="problem",ylabel="metaheuristic",zlabel="time [s]",legend=:topright)
+	else
+		scatter!(problems,metas,time,label=file)
+	end
+	global count+=1
+end
+savefig("plot.pdf")
+
