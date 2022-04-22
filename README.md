@@ -15,3 +15,8 @@ The following OSs were installed on a Raspberry Pi 4
 * openSUSE Tumbleweed
 \
 #Results
+Rank | OS | Net runtime | Pvalue
+|:---:|:---:|:---:|:---:|
+1 | Rasberry Pi OS | 156.54 | 0
+2 | DietPi (1.8 GHz) | 158.60 | 0
+3 | FreeBSD | 163.77 | 0
