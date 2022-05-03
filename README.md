@@ -17,19 +17,18 @@ The following OSs were installed on a Raspberry Pi 4
 # Results
 Rank | OS | Net runtime | Pvalue
 |:---:|:---:|:---:|:---:|
-1 | Rasberry Pi OS | 156.54 | 0
-2 | DietPi (1.8 GHz) | 158.60 | 0
-3 | FreeBSD | 163.77 | 0
-4 | os | 0
-5 | os | 0
-6 | os | 0
-7 | os | 0
-8 | os | 0
-9 | os | 0
-10 | os | 0
-11 | os | 0
-12 | os | 0
-13 | os | 0
-14 | os | 0
-15 | os | 0
-16 | os | 0
+1 | Rasberry Pi OS | 156.54
+2 | DietPi (1.8 GHz) | 158.60
+3 | FreeBSD | 163.77
+4 | Ubuntu 21.10 (32 bit) | 171.76
+5 | Ubuntu 21.10 | 176.44
+6 | Manjaro | 180.51
+7 | openSUSE | 182.03
+8 | Kali (32 bit) | 188.93
+8 | Arch Linux ARM | 189.71
+9 | DietPi | 191.09
+10 | Fedora 35 | 194.76
+11 | Kali | 198.18
+12 | Ubuntu 20.04 LTS | 281.84
+13 | FreeBSD (600 MHz) | 409.53
+14 | Alpine (running on RAM) | 975.14
