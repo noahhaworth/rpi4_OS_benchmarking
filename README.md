@@ -20,3 +20,16 @@ Rank | OS | Net runtime | Pvalue
 1 | Rasberry Pi OS | 156.54 | 0
 2 | DietPi (1.8 GHz) | 158.60 | 0
 3 | FreeBSD | 163.77 | 0
+4 | os | 0
+5 | os | 0
+6 | os | 0
+7 | os | 0
+8 | os | 0
+9 | os | 0
+10 | os | 0
+11 | os | 0
+12 | os | 0
+13 | os | 0
+14 | os | 0
+15 | os | 0
+16 | os | 0
