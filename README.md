@@ -32,4 +32,5 @@ Rank | OS | Net runtime | Pvalue*
 11 | Ubuntu 20.04 LTS | 281.84 | 5.44e-8
 12 | FreeBSD (600 MHz) | 409.53 | 8.36e-12
 13 | Alpine (running on RAM) | 975.14 | 
+-
 (*values comepare current row to the row below)
